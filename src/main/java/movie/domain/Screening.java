@@ -15,10 +15,29 @@ public class Screening {
     }
 
     public Reservation reserve(User user, List<Seat> seatsToReserve) {
-        // TODO: 예매 로직 구현
-        // 1. 좌석 예매 가능 여부 확인
-        // 2. 예매 정보 생성
-        // 3. Reservation 객체 반환
-        return null;
+        validateSeatsAreAvailable(seatsToReserve);
+        reserveSeats(seatsToReserve);
+        long totalPrice = calculateTotalPrice(seatsToReserve);
+        return new Reservation(this, seatsToReserve, totalPrice);
+    }
+
+    private void validateSeatsAreAvailable(List<Seat> seats) {
+        for (Seat seat : seats) {
+            if (!seat.isAvailable()) {
+                throw new IllegalStateException("Seat " + seat + " is already reserved.");
+            }
+        }
+    }
+
+    private void reserveSeats(List<Seat> seats) {
+        for (Seat seat : seats) {
+            seat.reserve();
+        }
+    }
+
+    private long calculateTotalPrice(List<Seat> seats) {
+        return seats.stream()
+                .mapToLong(Seat::getPrice)
+                .sum();
     }
 }

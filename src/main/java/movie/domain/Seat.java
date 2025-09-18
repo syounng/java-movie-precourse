@@ -18,6 +18,18 @@ public class Seat {
     }
 
     public void reserve() {
+        if (this.isReserved) {
+            throw new IllegalStateException("Seat " + this + " is already reserved.");
+        }
         this.isReserved = true;
+    }
+
+    public long getPrice() {
+        return this.grade.getPrice();
+    }
+
+    @Override
+    public String toString() {
+        return "" + row + col;
     }
 }

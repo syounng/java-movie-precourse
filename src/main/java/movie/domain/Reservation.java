@@ -15,4 +15,8 @@ public class Reservation {
         this.reservedSeats = reservedSeats;
         this.totalPrice = totalPrice;
     }
+
+    public long getTotalPrice() {
+        return totalPrice;
+    }
 }
