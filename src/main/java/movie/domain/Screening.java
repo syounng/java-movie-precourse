@@ -40,4 +40,13 @@ public class Screening {
                 .mapToLong(Seat::getPrice)
                 .sum();
     }
+
+    private LocalDateTime getEndTime() {
+        return startTime.plus(movie.getRunningTime());
+    }
+
+    public boolean overlaps(Screening other) {
+        return !this.getEndTime().isBefore(other.startTime) &&
+                !this.startTime.isAfter(other.getEndTime());
+    }
 }

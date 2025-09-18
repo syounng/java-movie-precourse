@@ -12,4 +12,8 @@ public class Movie {
         this.runningTime = runningTime;
         this.basePrice = basePrice;
     }
+
+    public Duration getRunningTime() {
+        return runningTime;
+    }
 }
