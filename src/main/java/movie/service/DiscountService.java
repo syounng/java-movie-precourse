@@ -6,6 +6,7 @@ import movie.domain.Reservation;
 import movie.policy.DiscountPolicy;
 import movie.policy.MovieDayDiscountPolicy;
 import movie.policy.TimeDiscountPolicy;
+import movie.domain.User;
 
 public class DiscountService {
     private final List<DiscountPolicy> policies;
@@ -15,18 +16,28 @@ public class DiscountService {
         this.policies = List.of(new MovieDayDiscountPolicy(), new TimeDiscountPolicy());
     }
 
-    public long calculateFinalPrice(Reservation reservation, long pointsToUse, PaymentMethod paymentMethod) {
+    public long calculateFinalPrice(Reservation reservation, User user, long pointsToUse,
+            PaymentMethod paymentMethod) {
         long price = reservation.getBasePrice();
 
         for (DiscountPolicy policy : policies) {
             price = policy.applyDiscount(price, reservation);
         }
 
+        validatePoints(user, pointsToUse, price);
+
+        user.usePoints(pointsToUse);
         price -= pointsToUse;
-        if (price < 0) {
-            price = 0;
-        }
 
         return paymentMethod.applyDiscount(price);
+    }
+
+    private void validatePoints(User user, long pointsToUse, long currentPrice) {
+        if (!user.hasEnoughPoints(pointsToUse)) {
+            throw new IllegalArgumentException("User does not have enough points.");
+        }
+        if (pointsToUse > currentPrice) {
+            throw new IllegalArgumentException("Cannot use more points than the total price.");
+        }
     }
 }
