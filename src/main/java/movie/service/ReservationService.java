@@ -1,8 +1,13 @@
-package movie.domain;
+package movie.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import movie.domain.Reservation;
+import movie.domain.Screening;
+import movie.domain.Seat;
+import movie.domain.User;
 
 public class ReservationService {
 

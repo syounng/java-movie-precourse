@@ -37,7 +37,7 @@ class ScreeningTest {
         assertThat(reservation).isNotNull();
         assertThat(seatA1.isAvailable()).isFalse();
         assertThat(seatA2.isAvailable()).isFalse();
-        assertThat(reservation.getTotalPrice()).isEqualTo(30_000L);
+        assertThat(reservation.getBasePrice()).isEqualTo(30_000L);
     }
 
     @Test
