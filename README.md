@@ -52,7 +52,7 @@
     - 포인트 사용은 최종 할인 금액을 확인한 후에 적용하도록 하여 사용자 입장에서 가장 편리하고 합리적인 방식으로 구현
 
 ## 🕹️ 설계 과정
-[참고 포스팅](https://nkdev.tistory.com/category/etc/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8)
+[✨관련 포스팅](https://nkdev.tistory.com/category/etc/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8)
 
 ### 도메인 모델
 ![도메인 모델](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FJk5Zj%2FbtsQGlkYtXn%2FAAAAAAAAAAAAAAAAAAAAAFSKXzhaYGPcC5mKMOvyTfI0DQPwtgbka6l3Isxor8v-%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3DgG3SZe5zyDahrl24xKTaHE3oGlQ%253D)
@@ -64,8 +64,10 @@
 ![클래스 다이어그램](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FGMHX1%2FbtsQFMJZO6L%2FAAAAAAAAAAAAAAAAAAAAAFr82A9GvqQ7GBm2Ksm8vUPpic-6LEp0lljdzmoIr5zi%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3D76qdAC6fgi053zmYO2nrAPdK9L0%253D)
 
 ## 💭 프로젝트 진행 후기
+기능 요구사항을 파악하고 이를 코드로 옮기기 위해 도메인 모델을 설계하는 과정은 쉽지 않았습니다. 그러나 설계가 완료되자 구현은 비교적 자연스럽게 따라왔습니다. 구현 단계에서는 제시된 컨벤션을 준수하여 코드의 형태가 통일되었고, 그 결과 가독성과 품질이 향상되었다고 느꼈습니다.
 
-
+또한 설계도를 피드백받거나 로직을 구현하는 과정에서 AI의 도움을 받기도 했는데, 제시된 코드가 내가 의도한 방향과 항상 일치하지는 않았습니다. 
+예를 들어 기존 함수를 수정하면 될 문제를 불필요하게 동일한 이름의 새로운 함수로 해결하거나, 특정 클래스에서 간단하고 응집도 있게 처리할 수 있는 로직을 다른 클래스에서 구현하여 불필요한 데이터 이동이 발생하는 경우가 있었습니다. 이러한 상황에서 스스로 판단하고 더 나은 방향으로 코드를 개선해 나가면서 많은 성장을 이룰 수 있었습니다.
 
 ## 🛠️ 사용 기술
 - Java 11
