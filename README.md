@@ -1,13 +1,12 @@
-# Java Movie Precourse
+# 👾 Next Step 캠퍼스 프로그래밍 1기 프리코스 미션 👾
 
 ## 🚀 프로젝트 소개
 이 프로젝트는 Java를 사용하여 영화 예매 시스템을 구현하는 프리코스 과제입니다.
 
 ## ✨ 주요 기능
-- [ ] 영화 목록 보기
-- [ ] 영화 시간표 보기
-- [ ] 영화 예매하기
-- [ ] 예매 내역 확인 및 취소하기
+- **영화 예매**: 좌석 등급(S, A, B)에 따라 차등 가격이 적용된 영화 예매 기능
+- **예매 유효성 검증**: 단일/다중 예매 시 좌석 및 상영 시간 중복 방지
+- **복합 할인 시스템**: 무비데이(비율), 시간(정액), 포인트, 결제 수단에 따른 순차적 다단계 할인 적용
 
 ## 📋 요구사항
 ### 상영 및 예매
@@ -34,6 +33,39 @@
   - 포인트 적용 후, 결제 수단에 따라 추가 할인이 적용됩니다.
     - 신용카드: **5% 할인**
     - 현금: **2% 할인**
+
+## 🔮 구현 전략
+- 책임-주도 설계(RDD)를 통한 객체지향 모델링
+    - 요구사항으로부터 객체 선정
+    - 서비스가 제공해야 할 행동(Use Case)으로부터 책임을 선정
+    - 각 책임을 적절한 객체에게 할당하여 '도메인 모델' 생성
+    - 도메인 모델을 바탕으로 '클래스 다이어그램' 생성
+    - 클래스 다이어그램을 바탕으로 전체적인 서비스의 클래스 구조 구현
+    - 상세 로직과 테스트 코드 구현
+- 점진적인 구현
+    1) 기본적인 예매 기능 구현
+    2) 좌석 중복 방지 기능 구현
+    3) 여러 영화 예매 시 상영 시간 중복 방지 기능 구현
+    4) 복잡한 할인 규칙 적용 기능 구현
+    5) 사용자 포인트 사용 기능 구현
+- 사용자 경험을 우선으로 하는 로직 설계
+    - 포인트 사용은 최종 할인 금액을 확인한 후에 적용하도록 하여 사용자 입장에서 가장 편리하고 합리적인 방식으로 구현
+
+## 🕹️ 설계 과정
+[참고 포스팅](https://nkdev.tistory.com/category/etc/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8)
+
+### 도메인 모델
+![도메인 모델](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FJk5Zj%2FbtsQGlkYtXn%2FAAAAAAAAAAAAAAAAAAAAAFSKXzhaYGPcC5mKMOvyTfI0DQPwtgbka6l3Isxor8v-%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3DgG3SZe5zyDahrl24xKTaHE3oGlQ%253D)
+
+### 객체의 책임
+![객체의 책임](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FEpRSi%2FbtsQEiwmaZe%2FAAAAAAAAAAAAAAAAAAAAANs6-dkHE0LdVU3UKH8GaY99_19N8CLJ-1CqdVdN0DT0%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3DoEaukvShHb%252BB7lJMDo%252Bq%252BsbjJQI%253D)
+
+### 클래스 다이어그램
+![클래스 다이어그램](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FGMHX1%2FbtsQFMJZO6L%2FAAAAAAAAAAAAAAAAAAAAAFr82A9GvqQ7GBm2Ksm8vUPpic-6LEp0lljdzmoIr5zi%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3D76qdAC6fgi053zmYO2nrAPdK9L0%253D)
+
+## 💭 프로젝트 진행 후기
+
+
 
 ## 🛠️ 사용 기술
 - Java 11
