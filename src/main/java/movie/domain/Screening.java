@@ -17,8 +17,8 @@ public class Screening {
     public Reservation reserve(User user, List<Seat> seatsToReserve) {
         validateSeatsAreAvailable(seatsToReserve);
         reserveSeats(seatsToReserve);
-        long totalPrice = calculateTotalPrice(seatsToReserve);
-        return new Reservation(this, seatsToReserve, totalPrice);
+        long basePrice = calculateBasePrice(seatsToReserve);
+        return new Reservation(this, seatsToReserve, basePrice);
     }
 
     private void validateSeatsAreAvailable(List<Seat> seats) {
@@ -35,10 +35,14 @@ public class Screening {
         }
     }
 
-    private long calculateTotalPrice(List<Seat> seats) {
+    private long calculateBasePrice(List<Seat> seats) {
         return seats.stream()
                 .mapToLong(Seat::getPrice)
                 .sum();
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
     }
 
     private LocalDateTime getEndTime() {

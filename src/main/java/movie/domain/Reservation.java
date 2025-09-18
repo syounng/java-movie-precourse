@@ -8,15 +8,19 @@ import java.util.List;
 public class Reservation {
     private Screening screening;
     private List<Seat> reservedSeats;
-    private long totalPrice;
+    private long basePrice;
 
-    public Reservation(Screening screening, List<Seat> reservedSeats, long totalPrice) {
+    public Reservation(Screening screening, List<Seat> reservedSeats, long basePrice) {
         this.screening = screening;
         this.reservedSeats = reservedSeats;
-        this.totalPrice = totalPrice;
+        this.basePrice = basePrice;
     }
 
-    public long getTotalPrice() {
-        return totalPrice;
+    public long getBasePrice() {
+        return basePrice;
+    }
+
+    public Screening getScreening() {
+        return screening;
     }
 }
