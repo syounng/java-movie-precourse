@@ -1,0 +1,56 @@
+package movie.domain;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+public class Screening {
+    private Movie movie;
+    private LocalDateTime startTime;
+    private List<Seat> seats;
+
+    public Screening(Movie movie, LocalDateTime startTime, List<Seat> seats) {
+        this.movie = movie;
+        this.startTime = startTime;
+        this.seats = seats;
+    }
+
+    public Reservation reserve(User user, List<Seat> seatsToReserve) {
+        validateSeatsAreAvailable(seatsToReserve);
+        reserveSeats(seatsToReserve);
+        long basePrice = calculateBasePrice(seatsToReserve);
+        return new Reservation(this, seatsToReserve, basePrice);
+    }
+
+    private void validateSeatsAreAvailable(List<Seat> seats) {
+        for (Seat seat : seats) {
+            if (!seat.isAvailable()) {
+                throw new IllegalStateException("Seat " + seat + " is already reserved.");
+            }
+        }
+    }
+
+    private void reserveSeats(List<Seat> seats) {
+        for (Seat seat : seats) {
+            seat.reserve();
+        }
+    }
+
+    private long calculateBasePrice(List<Seat> seats) {
+        return seats.stream()
+                .mapToLong(Seat::getPrice)
+                .sum();
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    private LocalDateTime getEndTime() {
+        return startTime.plus(movie.getRunningTime());
+    }
+
+    public boolean overlaps(Screening other) {
+        return !this.getEndTime().isBefore(other.startTime) &&
+                !this.startTime.isAfter(other.getEndTime());
+    }
+}
