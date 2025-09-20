@@ -1,4 +1,4 @@
-package domain;
+package movie.domain;
 
 enum SeatGrade {
     S(18_000L),

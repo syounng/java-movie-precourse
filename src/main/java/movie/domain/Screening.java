@@ -1,4 +1,4 @@
-package domain;
+package movie.domain;
 
 import java.util.List;
 

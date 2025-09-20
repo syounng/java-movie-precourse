@@ -1,4 +1,4 @@
-package domain;
+package movie.domain;
 
 public class Movie {
     private final int runningTime;

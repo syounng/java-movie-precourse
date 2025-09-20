@@ -1,6 +1,5 @@
-package domain;
+package movie.domain;
 
-import net.bytebuddy.asm.Advice;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
@@ -8,7 +7,6 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ReservationTest {
 
